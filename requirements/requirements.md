@@ -1,12 +1,15 @@
-# SRS099 Ls parameters usage - Bash command 
-# Software Requirements Specification
-
 # SRS099 Ls parameters usage - Bash command
 # Software Requirements Specification
 
-## Table of contents
+## Table of Contents
 
-
+* 1 [Introduction](#introduction)
+* 2 [Related Resources](#related-resources)
+* 3 [Requirements](#requirements)
+    * 3.1 [RQ.SRS-099.Ls.command](#rqsrs-099lscommand)
+    * 3.2 [RQ.SRS-099.Ls.command.flag.l](#rqsrs-099lscommandflagl)
+    * 3.3 [RQ.SRS-099.Ls.command.flag.a](#rqsrs-099lscommandflaga)
+* 4 [References](#references)
 
 ## Introduction
 
@@ -17,17 +20,27 @@ This software requirements specification covers requirements related to Bash com
 **Linux manual page**
 * https://man7.org/linux/man-pages/man1/ls.1.html
 
-## Requirements 
+## Requirements
 
 ### RQ.SRS-099.Ls.command
 version: 1.0
 
-[Ls command] SHALL return all of the files and directories of the current directory
+[Ls command] SHALL return all of the files and directories of the current directory and SHALL exit with code 0 on success
 
 ### RQ.SRS-099.Ls.command.flag.l
 version: 1.0
 
-[Ls command] with the flag **-l** SHALL return the total field with the number of 1024-byte blocks of data on the given directory
+[Ls command] with the flag **-l** SHALL return the long listing format and SHALL exit with code 0 on success.
+The output SHALL include a `total` line with the number of 1024-byte blocks of data in the given directory,
+followed by one line per file or directory containing the following information:
+
+* File permissions
+* Number of links
+* Owner name
+* Owner group
+* File size
+* Time of last modification
+* File or directory name
 
 For example:
 
@@ -48,7 +61,8 @@ drwxr-xr-x 1 user 197609        0 Apr  9 07:46 images/
 ### RQ.SRS-099.Ls.command.flag.a
 version: 1.0
 
-[Ls command] with the flag **-a** SHALL return visible and hidden files in the listing. Hidden elements in Linux comprehend files and/or directories that start with a dot (e.g. .bashrc)
+[Ls command] with the flag **-a** SHALL return visible and hidden files in the listing and SHALL exit with code 0 on success.
+Hidden elements in Linux comprehend files and/or directories that start with a dot (e.g. .bashrc)
 
 For example:
 
@@ -67,3 +81,7 @@ alter                       .git                           README.md
 altinity.png                .github                        regression.py
 atomic_insert               .gitignore 
 ```
+
+## References
+
+* [Linux manual page](https://man7.org/linux/man-pages/man1/ls.1.html)
